@@ -18,7 +18,7 @@ export default function Daily() {
   });
 
   useEffect(() => {
-    if (todayData.length !== 0) {
+    if (todayData) {
       let list: string[] = [];
       for (let i = todayData.length - 2; i >= 0; i--) {
         list.push(todayData[i].MSRDT.slice(8, 10) + "시");

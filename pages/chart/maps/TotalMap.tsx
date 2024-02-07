@@ -11,7 +11,7 @@ export default function TotalMap() {
   });
 
   useEffect(() => {
-    if (dataList.length !== 0) {
+    if (dataList) {
       let count1: number = 0;
       let count2: number = 0;
       let count3: number = 0;

@@ -23,7 +23,7 @@ export default function Daily() {
   });
 
   useEffect(() => {
-    setToday(todayState[0]?.MSRDT);
+    if (todayState) setToday(todayState[0]?.MSRDT);
   }, [todayState]);
 
   useEffect(() => {

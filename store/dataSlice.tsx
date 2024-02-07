@@ -19,16 +19,16 @@ interface AddressType {
 }
 
 interface StateType {
-  todayState: DataType[];
-  yesterdayState: DataType[];
-  totalState: DataType[];
+  todayState: DataType[] | null;
+  yesterdayState: DataType[] | null;
+  totalState: DataType[] | null;
   addressState: AddressType;
 }
 
 const initialState: StateType = {
-  todayState: [],
-  yesterdayState: [],
-  totalState: [],
+  todayState: null,
+  yesterdayState: null,
+  totalState: null,
   addressState: {
     NAME: "중구",
     ADDRESS: "서울 중구 덕수궁길 15 시청서소문별관 3동",
