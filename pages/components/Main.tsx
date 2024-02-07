@@ -63,6 +63,7 @@ export default function Main() {
       }
     }
     dispatch(yesterdayDate(yesterdayYear + yesterdayMonth + yesterdayDay));
+    // eslint-disable-next-line
   }, []);
 
   return (
