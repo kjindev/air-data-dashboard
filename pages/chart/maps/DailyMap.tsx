@@ -83,7 +83,7 @@ export default function DailyMap() {
         .catch((error) => console.log(error));
     }
     // eslint-disable-next-line
-  }, [nameState, todayDateState, yesterdayDateState]);
+  }, [nameState]);
 
   const getLocation = async (reqName: string) => {
     try {

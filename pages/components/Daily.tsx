@@ -79,7 +79,7 @@ export default function Daily() {
       .then(() => getData("yesterday"))
       .catch((error) => console.log(error));
     // eslint-disable-next-line
-  }, [todayDateState, nameState]);
+  }, [nameState]);
 
   return (
     <div>
