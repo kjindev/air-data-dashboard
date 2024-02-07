@@ -43,6 +43,7 @@ export default function Daily() {
         .then(() => request.getData("total"))
         .catch((error) => console.log(error));
     }
+    // eslint-disable-next-line
   }, [timeList]);
 
   return (

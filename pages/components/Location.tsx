@@ -21,6 +21,7 @@ export default function Location() {
         map,
       });
     }
+    // eslint-disable-next-line
   }, [LNG]);
 
   return (
