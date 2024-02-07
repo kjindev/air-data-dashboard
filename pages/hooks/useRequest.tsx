@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { todayData, yesterdayData, totalData } from "../../store/dataSlice";
 
-export default function useGetData() {
+export default function useRequest() {
   const dispatch = useDispatch();
 
   const getData = async (dateType: string) => {
