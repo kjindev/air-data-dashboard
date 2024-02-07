@@ -25,7 +25,6 @@ export default function DailyMap() {
   }, [nameState]);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     if (todayDateState && yesterdayDateState) {
       updateData(todayDateState, "", nameState)
         .then(() => getData("today"))
@@ -33,6 +32,7 @@ export default function DailyMap() {
         .then(() => getData("yesterday"))
         .catch((error) => console.log(error));
     }
+    // eslint-disable-next-line
   }, [nameState, todayDateState, yesterdayDateState]);
 
   const getLocation = async (reqName: string) => {
