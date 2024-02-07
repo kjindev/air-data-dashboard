@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { name } from "../../../store/nameSlice";
 import { RootState } from "../../../store/store";
-import useRequest from "../../hooks/useRequest";
 import {
   address,
   todayData,
