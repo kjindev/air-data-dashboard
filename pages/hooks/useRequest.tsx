@@ -10,7 +10,6 @@ export default function useRequest() {
       const result = await response.json();
       if (!result.RESULT) {
         const data = result.TimeAverageAirQuality.row;
-        console.log(data);
         if (dateType === "today") {
           dispatch(todayData(data));
         } else if (dateType === "yesterday") {
