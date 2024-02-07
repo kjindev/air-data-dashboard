@@ -29,7 +29,7 @@ export default function PM10Chart() {
   });
 
   useEffect(() => {
-    if (totalData.length !== 0) {
+    if (totalData) {
       let todayList: number[] = [];
       let nameList: string[] = [];
       let average: number = 1;

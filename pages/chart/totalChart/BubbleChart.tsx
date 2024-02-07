@@ -21,7 +21,7 @@ export default function BubbleChart() {
   });
 
   useEffect(() => {
-    if (dataList.length !== 0) {
+    if (dataList) {
       let todayPM10List: { x: number; y: number; r: number }[] = [];
       for (let i = dataList.length - 1; i >= 0; i--) {
         todayPM10List.push({

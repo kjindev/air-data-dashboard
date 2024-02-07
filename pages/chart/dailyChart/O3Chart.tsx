@@ -30,7 +30,7 @@ export default function O3Chart() {
   });
 
   useEffect(() => {
-    if (todayState.length !== 0) {
+    if (todayState) {
       let todayO3List: number[] = [];
       let timeList: string[] = [];
       for (let i = 4; i >= 0; i--) {
@@ -43,7 +43,7 @@ export default function O3Chart() {
   }, [todayState]);
 
   useEffect(() => {
-    if (yesterdayState.length !== 0) {
+    if (yesterdayState) {
       let yesterdayO3List: number[] = [];
       for (let i = 4; i >= 0; i--) {
         yesterdayO3List.push(yesterdayState[i]?.O3);

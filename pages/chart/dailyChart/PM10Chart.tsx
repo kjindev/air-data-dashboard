@@ -34,7 +34,7 @@ export default function PM10Chart() {
   });
 
   useEffect(() => {
-    if (todayState.length !== 0) {
+    if (todayState) {
       let todayList: number[] = [];
       let timeList: string[] = [];
       for (let i = todayState.length - 1; i >= 0; i--) {
@@ -47,7 +47,7 @@ export default function PM10Chart() {
   }, [todayState]);
 
   useEffect(() => {
-    if (yesterdayState.length !== 0) {
+    if (yesterdayState) {
       let yesterdayList: number[] = [];
       for (let i = yesterdayState.length - 1; i >= 0; i--) {
         yesterdayList.push(yesterdayState[i].PM10);

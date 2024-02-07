@@ -53,7 +53,7 @@ export default function SO2Chart() {
     labels: ["오늘", "연평균"],
     datasets: [
       {
-        data: [todayState[0]?.SO2, 0.004],
+        data: todayState && [todayState[0]?.SO2, 0.004],
         backgroundColor: ["#4b5563", "#d1d5db"],
         cutout: 45,
         borderWidth: [0, 5],
@@ -67,7 +67,7 @@ export default function SO2Chart() {
         <Doughnut options={options} data={data} />
         <div className="absolute top-[32%] md:top-[28%] left-[50%] translate-x-[-50%] translate-y-[50%] text-sm">
           <div className="text-xs text-center">SO2 농도</div>
-          <div>{todayState[0]?.SO2}ppm</div>
+          <div>{todayState && todayState[0]?.SO2}ppm</div>
         </div>
       </div>
     </div>
