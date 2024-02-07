@@ -64,7 +64,6 @@ export default function DailyMap() {
     }
   };
 
-  // const { getData, updateData } = useRequest();
   useEffect(() => {
     for (let i = 0; i < 25; i++) {
       if (dataRef.current?.children[0].children[i + 1].id === nameState)
@@ -83,7 +82,7 @@ export default function DailyMap() {
         .catch((error) => console.log(error));
     }
     // eslint-disable-next-line
-  }, [nameState]);
+  }, [nameState, todayDateState]);
 
   const getLocation = async (reqName: string) => {
     try {

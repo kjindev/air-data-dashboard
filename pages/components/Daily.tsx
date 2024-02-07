@@ -1,7 +1,7 @@
-import { useState, useEffect, lazy, Suspense } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import useRequest from "../hooks/useRequest";
+
 import Modal from "./Modal";
 import DailyMap from "../chart/maps/DailyMap";
 import PM10Chart from "../chart/dailyChart/PM10Chart";
@@ -9,77 +9,19 @@ import SO2Chart from "../chart/dailyChart/SO2Chart";
 import NO2Chart from "../chart/dailyChart/NO2Chart";
 import O3Chart from "../chart/dailyChart/O3Chart";
 import PM25Chart from "../chart/dailyChart/PM25Chart";
-import { todayData, totalData, yesterdayData } from "@/store/dataSlice";
 
 export default function Daily() {
   const [today, setToday] = useState("");
-  // const { updateData, getData } = useRequest();
-  const { todayDateState, yesterdayDateState, nameState } = useSelector(
-    (state: RootState) => {
-      return state.name;
-    }
-  );
+  const { nameState } = useSelector((state: RootState) => {
+    return state.name;
+  });
   const todayState = useSelector((state: RootState) => {
     return state.data.todayState;
   });
-  const dispatch = useDispatch();
-  const getData = async (dateType: string) => {
-    try {
-      const response = await fetch("/api/data");
-      const result = await response.json();
-      if (!result.RESULT) {
-        const data = result.TimeAverageAirQuality.row;
-        if (dateType === "today") {
-          dispatch(todayData(data));
-        } else if (dateType === "yesterday") {
-          dispatch(yesterdayData(data));
-        } else if (dateType === "total") {
-          dispatch(totalData(data));
-        }
-      }
-    } catch (error) {
-      console.log(error);
-      return null;
-    }
-  };
-
-  const updateData = async (
-    reqDate: string,
-    reqTime: string,
-    reqName: string | undefined
-  ) => {
-    try {
-      const response = await fetch("/api/data", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          date: reqDate,
-          time: reqTime,
-          name: reqName,
-        }),
-      });
-      if (!response.ok) {
-        console.log("error");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   useEffect(() => {
     if (todayState) setToday(todayState[0]?.MSRDT);
   }, [todayState]);
-
-  useEffect(() => {
-    updateData(todayDateState, "", nameState)
-      .then(() => getData("today"))
-      .then(() => updateData(yesterdayDateState, "", nameState))
-      .then(() => getData("yesterday"))
-      .catch((error) => console.log(error));
-    // eslint-disable-next-line
-  }, [nameState]);
 
   return (
     <div>
