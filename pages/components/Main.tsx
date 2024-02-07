@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import NavBar from "./NavBar";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store/store";
-import { todayDate, yesterdayDate } from "../store/nameSlice";
+import { RootState } from "../../store/store";
+import { todayDate, yesterdayDate } from "../../store/nameSlice";
 import Location from "./Location";
 import Daily from "./Daily";
 import Total from "./Total";

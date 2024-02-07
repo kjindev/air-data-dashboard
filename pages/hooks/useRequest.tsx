@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { todayData, yesterdayData, totalData } from "../store/dataSlice";
+import { todayData, yesterdayData, totalData } from "../../store/dataSlice";
 
 export default function useGetData() {
   const dispatch = useDispatch();

@@ -8,7 +8,7 @@ import {
 } from "chart.js";
 import { Bubble } from "react-chartjs-2";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
+import { RootState } from "../../../store/store";
 
 ChartJS.register(LinearScale, PointElement, Tooltip, Legend);
 

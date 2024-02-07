@@ -9,7 +9,7 @@ import {
   Legend,
 } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import { RootState } from "../../store/store";
+import { RootState } from "../../../store/store";
 
 ChartJS.register(
   CategoryScale,

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { location } from "../store/nameSlice";
-import { RootState } from "../store/store";
+import { location } from "../../store/nameSlice";
+import { RootState } from "../../store/store";
 
 export default function Modal() {
   const dispatch = useDispatch();

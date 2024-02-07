@@ -9,7 +9,7 @@ import {
 } from "chart.js";
 import { Scatter } from "react-chartjs-2";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
+import { RootState } from "../../../store/store";
 
 export default function PM25Chart() {
   const [todayPM25, setTodayPM25] = useState<{ x: number; y: number }[]>([]);

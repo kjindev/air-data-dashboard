@@ -1,6 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../store/store";
+import { RootState } from "../../store/store";
 import useRequest from "../hooks/useRequest";
 import TotalMap from "../chart/maps/TotalMap";
 import PieChart from "../chart/totalChart/PieChart";

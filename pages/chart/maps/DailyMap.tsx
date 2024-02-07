@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { name } from "../../store/nameSlice";
-import { RootState } from "../../store/store";
+import { name } from "../../../store/nameSlice";
+import { RootState } from "../../../store/store";
 import useRequest from "../../hooks/useRequest";
-import { address } from "../../store/dataSlice";
+import { address } from "../../../store/dataSlice";
 
 export default function DailyMap() {
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { daily, total } from "../store/nameSlice";
-import { RootState } from "../store/store";
+import { daily, total } from "../../store/nameSlice";
+import { RootState } from "../../store/store";
 
 export default function NavBar() {
   const dispatch = useDispatch();
