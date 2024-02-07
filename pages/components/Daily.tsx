@@ -32,7 +32,7 @@ export default function Daily() {
       .then(() => updateData(yesterdayDateState, "", nameState))
       .then(() => getData("yesterday"))
       .catch((error) => console.log(error));
-  }, []);
+  }, [todayDateState, nameState]);
 
   return (
     <div>

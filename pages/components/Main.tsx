@@ -13,7 +13,7 @@ declare global {
   }
 }
 
-export default function App() {
+export default function Main() {
   const dispatch = useDispatch();
   const { dailyState, totalState, locationState } = useSelector(
     (state: RootState) => {
