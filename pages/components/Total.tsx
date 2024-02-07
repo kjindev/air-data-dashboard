@@ -1,46 +1,91 @@
 import { useState, useEffect, lazy, Suspense } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import useRequest from "../hooks/useRequest";
 import TotalMap from "../chart/maps/TotalMap";
 import PieChart from "../chart/totalChart/PieChart";
 import BubbleChart from "../chart/totalChart/BubbleChart";
 import PM10Chart from "../chart/totalChart/PM10Chart";
+import { todayData, totalData, yesterdayData } from "@/store/dataSlice";
 
 export default function Daily() {
   const [timeList, setTimeList] = useState<string[]>([]);
-  const request = useRequest();
+  // const request = useRequest();
+  const dispatch = useDispatch();
   const date = useSelector((state: RootState) => {
     return state.name;
   });
-  const todayData = useSelector((state: RootState) => {
+  const todayState = useSelector((state: RootState) => {
     return state.data.todayState;
   });
 
+  const getData = async (dateType: string) => {
+    try {
+      const response = await fetch("/api/data");
+      const result = await response.json();
+      if (!result.RESULT) {
+        const data = result.TimeAverageAirQuality.row;
+        if (dateType === "today") {
+          dispatch(todayData(data));
+        } else if (dateType === "yesterday") {
+          dispatch(yesterdayData(data));
+        } else if (dateType === "total") {
+          dispatch(totalData(data));
+        }
+      }
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  };
+
+  const updateData = async (
+    reqDate: string,
+    reqTime: string,
+    reqName: string | undefined
+  ) => {
+    try {
+      const response = await fetch("/api/data", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          date: reqDate,
+          time: reqTime,
+          name: reqName,
+        }),
+      });
+      if (!response.ok) {
+        console.log("error");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
-    if (todayData) {
+    if (todayState) {
       let list: string[] = [];
-      for (let i = todayData.length - 2; i >= 0; i--) {
-        list.push(todayData[i].MSRDT.slice(8, 10) + "시");
+      for (let i = todayState.length - 2; i >= 0; i--) {
+        list.push(todayState[i].MSRDT.slice(8, 10) + "시");
       }
       setTimeList(list);
     }
-  }, [todayData]);
+  }, [todayState]);
 
   const changeOption = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const target = event.target as HTMLSelectElement;
     const selectTime = target.value.slice(0, 2);
-    request
-      .updateData(date.todayDateState, selectTime, "")
-      .then(() => request.getData("total"))
+    updateData(date.todayDateState, selectTime, "")
+      .then(() => getData("total"))
       .catch((error) => console.log(error));
   };
 
   useEffect(() => {
     if (timeList.length !== 0) {
-      request
-        .updateData(date.todayDateState, timeList[0].slice(0, 2), "")
-        .then(() => request.getData("total"))
+      updateData(date.todayDateState, timeList[0].slice(0, 2), "")
+        .then(() => getData("total"))
         .catch((error) => console.log(error));
     }
     // eslint-disable-next-line

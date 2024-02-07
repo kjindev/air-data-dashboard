@@ -3,7 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { name } from "../../../store/nameSlice";
 import { RootState } from "../../../store/store";
 import useRequest from "../../hooks/useRequest";
-import { address } from "../../../store/dataSlice";
+import {
+  address,
+  todayData,
+  totalData,
+  yesterdayData,
+} from "../../../store/dataSlice";
 
 export default function DailyMap() {
   const dispatch = useDispatch();
@@ -14,7 +19,52 @@ export default function DailyMap() {
     }
   );
 
-  const { getData, updateData } = useRequest();
+  const getData = async (dateType: string) => {
+    try {
+      const response = await fetch("/api/data");
+      const result = await response.json();
+      if (!result.RESULT) {
+        const data = result.TimeAverageAirQuality.row;
+        if (dateType === "today") {
+          dispatch(todayData(data));
+        } else if (dateType === "yesterday") {
+          dispatch(yesterdayData(data));
+        } else if (dateType === "total") {
+          dispatch(totalData(data));
+        }
+      }
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  };
+
+  const updateData = async (
+    reqDate: string,
+    reqTime: string,
+    reqName: string | undefined
+  ) => {
+    try {
+      const response = await fetch("/api/data", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          date: reqDate,
+          time: reqTime,
+          name: reqName,
+        }),
+      });
+      if (!response.ok) {
+        console.log("error");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // const { getData, updateData } = useRequest();
   useEffect(() => {
     for (let i = 0; i < 25; i++) {
       if (dataRef.current?.children[0].children[i + 1].id === nameState)
