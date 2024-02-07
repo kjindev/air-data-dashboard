@@ -24,6 +24,7 @@ export default function Main() {
     "pt-[10vh] md:pt-0 md:pl-[15%] w-[100%] flex flex-col justify-center items-center";
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const date = new Date();
     const year = date.getFullYear();
     const month = date.getMonth();

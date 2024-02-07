@@ -11,6 +11,7 @@ export default function TotalMap() {
   });
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     if (dataList.length !== 0) {
       let count1: number = 0;
       let count2: number = 0;
