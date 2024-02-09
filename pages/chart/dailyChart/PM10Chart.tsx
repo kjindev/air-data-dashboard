@@ -79,6 +79,7 @@ export default function PM10Chart() {
       },
       y: {
         min: 0,
+        max: 100,
         ticks: {
           stepSize: 20,
         },

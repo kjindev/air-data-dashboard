@@ -65,7 +65,8 @@ export default function PM25Chart() {
     scales: {
       x: {
         display: false,
-        max: 23,
+        min: 9,
+        max: 19,
       },
       y: {
         min: 0,

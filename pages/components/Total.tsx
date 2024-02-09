@@ -24,7 +24,8 @@ export default function Daily() {
       const response = await fetch("/api/data");
       const result = await response.json();
       if (!result.RESULT) {
-        const data = result.TimeAverageAirQuality.row;
+        // const data = result.TimeAverageAirQuality.row;
+        const data = result;
         if (dateType === "today") {
           dispatch(todayData(data));
         } else if (dateType === "yesterday") {
