@@ -46,14 +46,15 @@ export default function Daily() {
     reqName: string | undefined
   ) => {
     try {
-      const response = await fetch("/api/data", {
+      const response = await fetch("/api/data_temp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           date: reqDate,
-          time: reqTime,
+          // time: reqTime,
+          time: "202402091200",
           name: reqName,
         }),
       });
@@ -96,7 +97,7 @@ export default function Daily() {
     <div>
       <div className="pt-[5%] lg:pt-0 px-[5%] pb-5 w-[100%] flex flex-col md:flex-row items-center">
         <div className="text-2xl"> | 오늘의 서울 대기환경</div>
-        <div className="p-3">
+        {/* <div className="p-3">
           <select onChange={changeOption} className="px-3 py-1 drop-shadow">
             {timeList?.map((item, index) => (
               <option key={index} value={item}>
@@ -104,7 +105,7 @@ export default function Daily() {
               </option>
             ))}
           </select>
-        </div>
+        </div> */}
       </div>
       <div className="w-[95vw] md:w-[85vw] flex justify-center items-center">
         <div className="w-[90%] lg:h-[100%] flex flex-col lg:flex-row justify-between items-center">

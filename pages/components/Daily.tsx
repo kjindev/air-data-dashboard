@@ -29,10 +29,10 @@ export default function Daily() {
         <Modal />
         <div className="text-2xl"> | {nameState}의 실시간 대기환경</div>
         <div>
-          <span>({today?.slice(0, 4)}년 </span>
+          <span>{today?.slice(0, 4)}년 </span>
           <span>{today?.slice(4, 6)}월 </span>
-          <span>{today?.slice(6, 8)}일 </span>
-          <span>{today?.slice(8, 10)}시 기준)</span>
+          <span>{today?.slice(6, 8)}일 기준</span>
+          {/* <span>{today?.slice(8, 10)}시 기준</span> */}
         </div>
       </div>
       <div className="w-[95vw] md:w-[85vw] flex flex-col justify-center items-center">
