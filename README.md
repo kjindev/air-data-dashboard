@@ -1,40 +1,28 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 서울시 대기환경 데이터 Dashboard
 
-## Getting Started
+서울시의 대기환경 데이터를 차트로 표현한 웹 페이지입니다.
 
-First, run the development server:
+### 주제
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- REST API를 이용한 프론트엔드와 백엔드의 HTTP 통신 구현
+- 차트 라이브러리를 이용한 데이터의 시각화
+- 배포 Page : https://air-data-dashboard.vercel.app/
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+#### 사용 기술
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- Next.js
+- Tailwind CSS
+- Redux-Toolkit
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+서울 지도 SVG 파일 출처 : http://www.gisdeveloper.co.kr/?p=8555
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 개발 내용
 
-## Learn More
+- **구**
+  - 지도를 클릭하면 해당 구의 대기환경 데이터를 차트로 확인할 수 있습니다.
+  - 하단의 물음표 아이콘을 클릭하면 해당 구의 측정소 위치를 지도로 확인할 수 있습니다.
+- **서울 전체**
+  - 시간을 선택하여 특정 시간의 서울 전체 대기환경 데이터를 확인할 수 있습니다.
+  - 해당 시간의 미세먼지 상황을 지도의 색깔로 확인할 수 있으며, 그 외의 대기환경 데이터는 차트로 확인할 수 있습니다.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
