@@ -25,9 +25,9 @@ export default function BubbleChart() {
       let todayPM10List: { x: number; y: number; r: number }[] = [];
       for (let i = dataList.length - 1; i >= 0; i--) {
         todayPM10List.push({
-          x: dataList[i].PM10,
-          y: dataList[i].NO2,
-          r: dataList[i].PM25,
+          x: dataList[i].PM10 / 5,
+          y: dataList[i].NO2 / 5,
+          r: dataList[i].PM25 / 5,
         });
       }
       setTodayPM10(todayPM10List);

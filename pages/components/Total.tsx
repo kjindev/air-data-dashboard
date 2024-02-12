@@ -24,8 +24,8 @@ export default function Daily() {
       const response = await fetch("/api/data");
       const result = await response.json();
       if (!result.RESULT) {
-        // const data = result.TimeAverageAirQuality.row;
-        const data = result;
+        const data = result.TimeAverageAirQuality.row;
+        // const data = result;
         if (dateType === "today") {
           dispatch(todayData(data));
         } else if (dateType === "yesterday") {
@@ -46,15 +46,14 @@ export default function Daily() {
     reqName: string | undefined
   ) => {
     try {
-      const response = await fetch("/api/data_temp", {
+      const response = await fetch("/api/data", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           date: reqDate,
-          // time: reqTime,
-          time: "202402091200",
+          time: reqTime,
           name: reqName,
         }),
       });

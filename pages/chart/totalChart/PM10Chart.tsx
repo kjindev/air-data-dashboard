@@ -43,7 +43,7 @@ export default function PM10Chart() {
         nameList.push(totalData[i].MSRSTE_NM);
       }
       setTodayPM10(todayList);
-      // setName(nameList);
+      setName(nameList);
     }
   }, [totalData]);
 
@@ -73,18 +73,8 @@ export default function PM10Chart() {
       },
     },
   };
+  const labels = [...name];
 
-  const labels = [
-    "강남구",
-    "강동구",
-    "강북구",
-    "강서구",
-    "관악구",
-    "광진구",
-    "구로구",
-    "금천구",
-    "노원구",
-  ];
   const data = {
     labels,
     datasets: [
@@ -100,7 +90,7 @@ export default function PM10Chart() {
   return (
     <div className="w-[100%] h-[100%] py-2 px-3">
       <div className="w-[100%] text-center py-2">
-        미세먼지 편차 상위 9지역 (단위: ㎍/㎥)
+        미세먼지 편차 (단위: ㎍/㎥)
       </div>
       <div className="h-[93%]">
         <Bar options={options} data={data} />
